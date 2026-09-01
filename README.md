@@ -27,7 +27,7 @@ The broader system combines **Audio-Video Reinforcement Learning** with **Modali
 ## :calendar: Plan
 
 - :heavy_check_mark: Initialize the DreamX-Creator project repository.
-- [ ] Release the DreamX-Creator 1.0 technical report.
+- :heavy_check_mark: Release the DreamX-Creator 1.0 technical report.
 - [ ] Release validated model weights, inference code, configurations, and evaluation tools.
 
 ## :books: Citation
