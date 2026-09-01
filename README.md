@@ -34,8 +34,6 @@ The broader roadmap extends the base generator with **Audio-Video Reinforcement 
 - :heavy_check_mark: Initialize the DreamX-Creator project repository.
 - [ ] Release the DreamX-Creator 1.0 technical report.
 - [ ] Release validated model weights, inference code, configurations, and evaluation tools.
-- [ ] Complete and validate Audio-Video Reinforcement Learning with Modality-Aware Multimodal Feedback.
-- [ ] Complete and validate the Autoregressive 1-Step 2K Refiner.
 
 ## :books: Citation
 
