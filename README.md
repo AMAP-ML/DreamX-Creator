@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="assets/dreamx-creator_teaser.png" alt="DreamX-Creator teaser">
+  <img src="dreamx-creator_teaser.png" alt="DreamX-Creator teaser">
 
 <h1>DreamX-Creator 1.0: Democratizing Native Audio-Video Generation</h1>
 
@@ -9,12 +9,7 @@ DreamX Team
 
 <div align="center">
 
-![Official Website](https://img.shields.io/badge/%F0%9F%8C%90%20Official%20Website-Coming%20Soon-lightgrey)
-![REACTOR](https://img.shields.io/badge/REACTOR-Coming%20Soon-lightgrey)
-![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-Coming%20Soon-lightgrey)
-![ModelScope](https://img.shields.io/badge/ModelScope-Coming%20Soon-lightgrey?logo=modelscope)
 [![arXiv](https://img.shields.io/badge/arXiv-2608.31106-b31b1b.svg)](https://arxiv.org/abs/2608.31106)
-![Project Page](https://img.shields.io/badge/%F0%9F%8C%90%20Project%20Page-Coming%20Soon-lightgrey)
 [![License](https://img.shields.io/badge/License-Apache--2.0-green)](LICENSE)
 
 </div>
