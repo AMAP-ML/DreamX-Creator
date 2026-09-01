@@ -18,7 +18,7 @@ DreamX Team
 
 **DreamX-Creator 1.0** is a research framework for **native joint audio-video generation**. Given a first frame and a text prompt, its implemented base generator jointly models modality-specialized video and audio streams, using **Gated Cross-Modal Attention** and **Progressive Joint Training** to enable bidirectional audio-video interaction.
 
-The broader roadmap extends the base generator with **Audio-Video Reinforcement Learning** using **Modality-Aware Multimodal Feedback** and **Autoregressive 1-Step 2K Refinement**. These components are currently under development and validation.
+The broader system combines **Audio-Video Reinforcement Learning** with **Modality-Aware Multimodal Feedback** to improve visual and audio quality, semantic consistency, and fine-grained audio-video synchronization. **Autoregressive 1-Step 2K Refinement** then upgrades the generated video to high-quality 2K output while preserving content, motion, and audio-aligned timing.
 
 ## :fire: News
 
@@ -52,4 +52,4 @@ This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE) fo
 
 ## :sparkles: Acknowledgement
 
-We would like to thank the [Wan Team](https://github.com/Wan-Video/Wan2.2) and the [OpenMOSS Team](https://github.com/OpenMOSS/MOVA) for their outstanding open-source work on Wan and MOVA, respectively, which provided an important foundation for this project.
+We would like to thank the [Wan Team](https://github.com/Wan-Video/Wan2.2) and the [OpenMOSS Team](https://github.com/OpenMOSS/MOVA) for their outstanding open-source work on Wan and MOVA, respectively.
