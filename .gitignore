@@ -1,0 +1,11 @@
+# Model weights are distributed on HuggingFace / ModelScope, not in git.
+checkpoints/*
+!checkpoints/README.md
+# Runtime outputs.
+outputs/
+video_refiner/outputs/
+# Local CLI state.
+.qoder/
+# Python.
+__pycache__/
+*.pyc

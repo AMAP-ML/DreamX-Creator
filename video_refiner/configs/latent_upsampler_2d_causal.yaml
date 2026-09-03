@@ -1,0 +1,24 @@
+# Causal 2D latent upsampler architecture: same 2D backbone as
+# latent_upsampler_2d.yaml, but the shared TemporalConv modules left-pad their
+# kernels so output frame t depends only on input frames <= t (streaming-safe;
+# matches the causal inference pipeline).
+# Used via: --latent_upsampler_config configs/latent_upsampler_2d_causal.yaml
+#           --latent_upsampler_ckpt <path to model.pt>
+latent_upsample_mode: wan22_2d_latent_up
+latent_upsampler_arch_config:
+  target: wan.modules.latent_upsampler.wan22_2d_latent_up.LatentUpsampler
+  params:
+    in_channels: 48
+    out_channels: 48
+    channels: 512
+    in_blocks: 12
+    out_blocks: 12
+    embed_dim: 64
+    num_groups: 32
+    dropout: 0.0
+    temporal_every: 2
+    temporal_kernel: 3
+    upsample_scale: 2
+    residual: true
+    causal: true           # temporal left-padding: output frame t sees only <= t
+latent_upsampler_precision: bf16

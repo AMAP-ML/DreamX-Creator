@@ -1,0 +1,19 @@
+# Runtime dependencies for single-image Creator inference.
+torch==2.10.0
+torchvision==0.25.0
+torchaudio==2.10.0
+numpy==2.2.0
+Pillow==11.3.0
+diffusers==0.37.1
+transformers==4.57.6
+accelerate==1.12.0
+omegaconf==2.3.0
+einops==0.8.2
+safetensors==0.7.0
+sentencepiece==0.2.1
+av==12.0.0
+soundfile==0.13.1
+tqdm==4.67.3
+
+# flash-attn and sageattention are optional; PyTorch SDPA is the fallback.
+# ffmpeg is a system executable required when muxing the final MP4.

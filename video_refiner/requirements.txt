@@ -1,0 +1,15 @@
+torch>=2.4.0
+torchvision>=0.19.0
+einops
+omegaconf
+peft
+transformers>=4.49.0
+ftfy
+regex
+tqdm
+safetensors
+
+# Optional accelerators; inference falls back gracefully when these are absent:
+# flash-attn          (FlashAttention 2/3 for dense attention paths)
+# triton              (fused block-grid window attention kernels)
+# magi-attention      (MagiAttention flex/varlen window backend)

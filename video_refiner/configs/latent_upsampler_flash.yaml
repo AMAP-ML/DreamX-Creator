@@ -1,0 +1,20 @@
+# FlashLatentUpsampler latent upsampler architecture.
+# Used via: --latent_upsampler_config configs/latent_upsampler_flash.yaml
+#           --latent_upsampler_ckpt <path to model.pt>
+latent_upsample_mode: flash_latent_up
+latent_upsampler_arch_config:
+  target: wan.modules.latent_upsampler.flash_latent_up.FlashLatentUpsampler
+  params:
+    in_channels: 48        # Wan2.2 latent channels
+    out_channels: 48
+    mid_channels: 128
+    num_blocks: 8
+    activation: relu
+    residual: false
+    residual_scale: 1.0
+    memory_init: replicate
+    default_parallel: true
+    # "nearest" -> an untrained model is an exact nearest-neighbour upsample.
+    init_mode: nearest
+    upsample_scale: 2      # fixed spatial scale baked into the model
+latent_upsampler_precision: bf16

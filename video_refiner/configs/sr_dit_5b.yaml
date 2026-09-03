@@ -1,0 +1,72 @@
+# SR-DiT 5B: causal few-step super-resolution with block-grid window attention.
+#
+# teacher_forcing: true -> the sf path (CausalInferencePipeline.inference_sr):
+# per-chunk denoise + KV-cache refresh (rerun @ t=0), is_stream=True. The
+# block-grid window path takes the streaming branch (f_kv > f_cur): the current
+# chunk's queries attend cached history; the temporal radius is derived from the
+# cache length (stream_kv_len + current chunk).
+
+# ── Few-step schedule ──
+denoising_step_list:
+- 1000
+- 750
+- 500
+- 250
+
+warp_denoising_step: true
+context_noise: 0
+
+# ── Sampling ──
+num_train_timestep: 1000
+model_kwargs:
+  timestep_shift: 5.0
+independent_first_frame: false
+num_frame_per_block: 3
+
+negative_prompt: '色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走'
+
+# ── Architecture ──
+dit_arch_config:
+  model_type: t2v
+  patch_size: [1, 2, 2]
+  text_len: 512
+  dim: 3072
+  ffn_dim: 14336
+  freq_dim: 256
+  text_dim: 4096
+  in_dim: 48
+  out_dim: 48
+  num_heads: 24
+  num_layers: 30
+  window_size: [-1, -1]
+  qk_norm: true
+  cross_attn_norm: true
+  eps: 1.0e-6
+  stream_chunk_size: 3
+  rope_max_seq_len: 1024
+  rope_theta: 10000.0
+  rope_cache_multiple: 1024
+  # ── Causal block-grid window self-attention ──
+  sparse_causal: false            # the window path does not use the sparse causal mask
+  use_window_attn: true           # enable window attention (generator only)
+  window_block_hw: [4, 4]       # spatial query-block size (bh, bw)
+  window_block_radius_hw: [3, 3]  # spatial neighborhood radius (rh, rw)
+  window_chunk: null              # null = one-shot; set to bound peak memory
+  stream_kv_len: 9                # latent frames of history kept in the streaming KV cache
+  # Chunk-causal window for the PARALLEL forward, in latent frames. block_t =
+  # stream_chunk_size (3); span = window_causal_kv_len + 3 = 12 frames, matching
+  # the streaming cache 9 + current 3. Must be divisible by stream_chunk_size.
+  window_causal_kv_len: 9
+
+# ── Latent upsampler ──
+latent_upsample_mode: bilinear
+
+# ── Refiner hyperparameters ──
+refiner_sigma_start: 0.6251
+
+# ── VAE / Text Encoder ──
+# Wan2.2-TI2V-5B model directory: must contain Wan2.2_VAE.pth,
+# models_t5_umt5-xxl-enc-bf16.pth and google/umt5-xxl/
+# Relative to this repo's video_refiner/ directory (run_inference.sh cds here).
+wan_model_dir: ../checkpoints/wan2.2_ti2v_5b
+vae_version: "2.2"
